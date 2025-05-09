@@ -25,6 +25,7 @@ class _MainPageState extends State<MainPage> {
         onPressed: () {},
         backgroundColor: Colors.green,
         child: Icon(Icons.add),
+        shape: CircleBorder(),
       ),
       body: HomePage(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
