@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             SizedBox(height: 10),
                             Text(
-                              "Rp 1.000.000",
+                              "Rp 10.000.000",
                               style: GoogleFonts.montserrat(
                                 color: Colors.white,
                                 fontSize: 14,
