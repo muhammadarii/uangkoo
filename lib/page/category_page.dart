@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:uangkoo/models/database.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key});
@@ -10,6 +11,22 @@ class CategoryPage extends StatefulWidget {
 
 class _CategoryPageState extends State<CategoryPage> {
   bool isExpense = true;
+  final AppDb database = AppDb();
+
+  Future insert(String name, int type) async {
+    DateTime now = DateTime.now();
+    final row = await database
+        .into(database.categories)
+        .insertReturning(
+          CategoriesCompanion.insert(
+            name: name,
+            type: type,
+            createdAt: now,
+            updatedAt: now,
+          ),
+        );
+    print(row);
+  }
 
   void openDialog() {
     showDialog(
@@ -36,7 +53,12 @@ class _CategoryPageState extends State<CategoryPage> {
                     ),
                   ),
                   SizedBox(height: 10),
-                  ElevatedButton(onPressed: () {}, child: Text("Save")),
+                  ElevatedButton(
+                    onPressed: () {
+                      insert("MAKAN MAKAN", 2);
+                    },
+                    child: Text("Save"),
+                  ),
                 ],
               ),
             ),
